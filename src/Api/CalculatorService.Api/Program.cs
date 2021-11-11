@@ -42,8 +42,9 @@ namespace CalculatorService.Api
         private static void SetApplicationLogging()
         {
             Log.Logger = new LoggerConfiguration()
-            .MinimumLevel.Warning()
+            .MinimumLevel.Debug()
             .Enrich.FromLogContext()
+            .WriteTo.Console()
             .WriteTo.File("logfile.log", LogEventLevel.Warning, rollingInterval: RollingInterval.Day, retainedFileCountLimit: 10)
             .CreateLogger();
         }

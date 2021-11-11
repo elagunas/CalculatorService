@@ -1,16 +1,53 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CalculatorService.Client
 {
     class Program
     {
+        public static ManualResetEventSlim Done = new ManualResetEventSlim(false);
         private readonly static CalculatorServiceApiClient _calculatorServiceApiClient = new CalculatorServiceApiClient();
-        
+
         static async Task Main(string[] args)
         {
+
+            using (CancellationTokenSource cts = new CancellationTokenSource())
+            {
+                Action shutdown = () =>
+                {
+                    if (!cts.IsCancellationRequested)
+                    {
+                        Console.WriteLine("Application is shutting down...");
+                        cts.Cancel();
+                    }
+
+                    Done.Wait();
+                };
+
+                Console.CancelKeyPress += (sender, eventArgs) =>
+                {
+                    shutdown();
+                    eventArgs.Cancel = false;
+                };
+
+                await Run(cts);
+                Done.Set();
+            }
+
+
+        }
+
+        private static async Task Run(CancellationTokenSource cts)
+       {
+            if (cts.Token.IsCancellationRequested)
+            {
+                cts.Token.ThrowIfCancellationRequested();
+            }
+
+
             Console.WriteLine("Welcome to CalculatorClient App");
             bool showMenu = true;
 
@@ -25,8 +62,12 @@ namespace CalculatorService.Client
             {
                 Console.WriteLine("An exception was ocurred", ex.Message);
                 Console.WriteLine("Run CalculatorClient App again");
+               
             }
+
+            //Program.Done.Wait();
         }
+
 
         private static async Task<bool> MainMenu()
         {

@@ -13,7 +13,8 @@ namespace CalculatorService.Client
     {
         private static readonly HttpClient client = new HttpClient();
         private readonly IConfiguration Configuration = new ConfigurationBuilder()
-                .AddJsonFile($"appsettings.json", true, true).Build();
+                .AddJsonFile($"appsettings.json", true, true)
+            .AddEnvironmentVariables().Build();
 
         public CalculatorServiceApiClient()
         {

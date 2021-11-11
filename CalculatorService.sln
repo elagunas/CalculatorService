@@ -25,11 +25,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalculatorService.Domain", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalculatorService.Api.IntegrationTests", "tests\CalculatorService.Api.IntegrationTests\CalculatorService.Api.IntegrationTests.csproj", "{A63FD84D-88BA-4F25-BB60-A7A510228802}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorService.UnitTests", "CalculatorService.UnitTests\CalculatorService.UnitTests.csproj", "{585CD429-AE70-46CA-9D5A-566A2C80DBA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalculatorService.UnitTests", "CalculatorService.UnitTests\CalculatorService.UnitTests.csproj", "{585CD429-AE70-46CA-9D5A-566A2C80DBA9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{50ED2BA1-6444-46E0-8C05-385A55F657A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorService.Client", "src\Client\CalculatorService.Client\CalculatorService.Client.csproj", "{C62ED505-9C56-4825-89F8-669DE38486DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalculatorService.Client", "src\Client\CalculatorService.Client\CalculatorService.Client.csproj", "{C62ED505-9C56-4825-89F8-669DE38486DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
