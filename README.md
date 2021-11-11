@@ -26,9 +26,11 @@ In test projects:
 In order to testing purposes, use this docker commands
 
 docker build -f .\api.Dockerfile -t calculatorserviceapi .
+
 docker build -f .\console.Dockerfile -t consoleapiclient .
 
 docker run -d -p 5000:80  calculatorserviceapi
+
 docker run -i -e CalculatorApiAddres='http://host.docker.internal:5000' consoleapiclient
 
 ![alt text](https://i.ibb.co/SyBrHHT/clientapp.png)
